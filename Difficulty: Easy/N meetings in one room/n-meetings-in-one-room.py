@@ -8,17 +8,16 @@ class Solution:
         # code here
         timings=[[0, 0] for _ in range(n)]
         for i in range(n):
-            timings[i][0]=start[i]
-            timings[i][1]=end[i]
-        timings.sort(key = lambda x: x[1])    
-        ans=0
-        end=0
+            timings[i][0] = start[i]
+            timings[i][1] = end[i]
+        timings.sort(key = lambda x:x[1])
+        end, ans = 0, 0
         for t in timings:
-            start=t[0]
+            start = t[0]
             if start>end:
                 ans+=1
-                end=t[1]
-        return ans       
+                end = t[1]
+        return ans        
 
 
 #{ 
