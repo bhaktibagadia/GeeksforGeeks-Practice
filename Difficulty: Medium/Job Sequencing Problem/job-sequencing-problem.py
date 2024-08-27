@@ -14,23 +14,19 @@ class Solution:
     
     #Function to find the maximum profit and the number of jobs done.
     def JobScheduling(self,Jobs,n):
-        
         # code here
-        Jobs.sort(key = lambda x:x.profit, reverse = True)
         maxdeadline = max(job.deadline for job in Jobs)
-        timeline = [None]*(maxdeadline+1)
-        
-        jobcount = 0
-        maxprofit = 0
-        
+        timeline = [0]*(1+maxdeadline)
+        jobdone, maxprofit = 0, 0
+        Jobs.sort(key=lambda x:x.profit, reverse = True)
         for job in Jobs:
-            for t in range(job.deadline, 0, -1):
-                if timeline[t] is None:
-                    timeline[t] = job.id
-                    jobcount +=1
-                    maxprofit += job.profit
+            for t in range(job.deadline, 0 , -1):
+                if not timeline[t]:
+                    jobdone+=1
+                    maxprofit+=job.profit
+                    timeline[t]=1
                     break
-        return jobcount, maxprofit        
+        return jobdone, maxprofit        
 
 
 #{ 
