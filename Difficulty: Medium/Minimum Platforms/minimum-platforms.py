@@ -7,18 +7,17 @@ class Solution:
         # code here
         arr.sort()
         dep.sort()
+        platforms, maxplatforms = 0,0
         a, d = 0,0
-        platform, maxplatform = 0,0
         while a<n and d<n:
             if arr[a]<=dep[d]:
+                platforms+=1
+                maxplatforms=max(maxplatforms, platforms)
                 a+=1
-                platform+=1
-                maxplatform = max(maxplatform, platform)
             else:
+                platforms-=1
                 d+=1
-                platform-=1
-        return maxplatform        
-
+        return maxplatforms        
 
 #{ 
  # Driver Code Starts
