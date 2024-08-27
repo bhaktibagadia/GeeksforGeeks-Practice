@@ -6,19 +6,19 @@ class Solution:
     #be performed in a meeting room.
     def maximumMeetings(self,n,start,end):
         # code here
-        timings=[[0, 0] for _ in range(n)]
+        timings = [[0, 0] for _ in range(n)]
+        meetings= 0
         for i in range(n):
             timings[i][0] = start[i]
             timings[i][1] = end[i]
         timings.sort(key = lambda x:x[1])
-        end, ans = 0, 0
-        for t in timings:
-            start = t[0]
+        end = 0
+        for timing in timings:
+            start = timing[0]
             if start>end:
-                ans+=1
-                end = t[1]
-        return ans        
-
+                meetings+=1
+                end = timing[1]
+        return meetings        
 
 #{ 
  # Driver Code Starts
