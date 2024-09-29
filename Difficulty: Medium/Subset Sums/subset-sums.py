@@ -2,16 +2,16 @@
 class Solution:
 	def subsetSums(self, arr, n):
 		# code here
-		ans = []
-		def rec(l, r, cursum):
-		    if l>r:
-		        ans.append(cursum)
-		        return
-		    rec(l+1, r, cursum+arr[l])
-		    rec(l+1, r, cursum)
-		rec(0, n-1, 0)
-		ans.sort()
-		return ans
+        ans = []
+        def rec(i, cursum):
+            if i==n:
+                ans.append(cursum)
+                return
+            rec(i+1, cursum+arr[i])
+            rec(i+1, cursum)
+        rec(0, 0)
+        ans.sort()
+        return ans
 
 #{ 
  # Driver Code Starts
